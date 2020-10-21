@@ -8,7 +8,7 @@
   },
   "test": {
     "username": "wishlist_user",
-    "password": "wishlist_user",
+    "password": "wishlist_pass",
     "database": "wishlist_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
