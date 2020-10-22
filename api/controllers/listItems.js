@@ -24,11 +24,13 @@ router.get('/', (req,res) => {
 
 
 router.post('/', (req, res) => {
-  let { name, description } = req.body;
+  let { name, url, quantity, note } = req.body;
 
   ListItem.create({
     name,
-    description
+    url,
+    quantity,
+    note
   })
     .then(listItem => {
       res.status(201).json(listItem);

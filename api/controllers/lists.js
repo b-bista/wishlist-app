@@ -52,7 +52,6 @@ router.get('/:id', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-  let {name, description} = req.body;
   const { id } = req.params;
   List.findByPk(id)
     .then(list => {
