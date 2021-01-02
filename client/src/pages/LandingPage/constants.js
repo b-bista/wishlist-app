@@ -1,0 +1,13 @@
+//dictates which page to render
+export const RENDER_LOGIN_PAGE = 'RENDER_LOGIN_PAGE'
+export const RENDER_SIGNUP_PAGE = 'RENDER_SIGNUP_PAGE'
+
+//user sign in
+export const USER_SIGN_IN_SUCCESS = 'USER_SIGN_IN_SUCCESS'
+export const USER_SIGN_IN_FAILURE = 'USER_SIGN_IN_FAILURE'
+export const USER_SIGN_IN_PENDING = 'USER_SIGN_IN_PENDING'
+
+//user sign up
+export const USER_SIGN_UP_SUCCESS = 'USER_SIGN_UP_SUCCESS'
+export const USER_SIGN_UP_FAILURE = 'USER_SIGN_UP_FAILURE'
+export const USER_SIGN_UP_PENDING = 'USER_SIGN_UP_PENDING'

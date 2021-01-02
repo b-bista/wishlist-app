@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const {List} = db;
+const {ListItem, List} = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -15,25 +15,37 @@ const {List} = db;
 // explore other patterns to reduce code duplication.
 // TODO: Can you spot where we have some duplication below?
 
-//Lists
+//ListItems
 router.get('/', (req,res) => {
-  List.findAll({include: 'listItems'})
-    .then(lists => res.json(lists));
+  console.log('Works');
+  List.findAll({include: 'listItem'})
+    .then(listItems => res.json(listItems));
 });
 
 
 router.post('/', (req, res) => {
-  let { name, description } = req.body;
-
   List.create({
-    name,
-    description
+    email: req.body.email,
+    password: req.body.password,
+    customer: {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phone: req.body.phone,
+      address1: req.body.address1,
+      address2: req.body.address2,
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode,
+      country: req.body.country
+    }
+  }, {
+    include: [ListItem]
   })
-    .then(list => {
-      res.status(201).json(list);
+    .then((list) => {
+      res.json(list);
     })
-    .catch(err => {
-      res.status(400).json(err);
+    .catch((err) => {
+      res.json(err);
     });
 });
 
@@ -41,31 +53,32 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   Post.findByPk(id)
-    .then(list => {
-      if(!list) {
+    .then(listItem => {
+      if(!listItem) {
         return res.sendStatus(404);
       }
 
-      res.json(list);
+      res.json(listItem);
     });
 });
 
 
 router.put('/:id', (req, res) => {
+  let {name, description} = req.body;
   const { id } = req.params;
-  List.findByPk(id)
-    .then(list => {
-      if(!list) {
+  ListItem.findByPk(id)
+    .then(listItem => {
+      if(!listItem) {
         return res.sendStatus(404);
       }
-
+      
       for (const data in req.body){
-        list[data] = req.body[data];
+        listItem[data] = req.body[data];
       }
 
-     list.save()
-        .then(list => {
-          res.json(list);
+     listItem.save()
+        .then(listItem => {
+          res.json(listItem);
         })
         .catch(err => {
           res.status(400).json(err);
@@ -76,13 +89,13 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  List.findByPk(id)
-    .then(list => {
-      if(!list) {
+  ListItem.findByPk(id)
+    .then(listItem => {
+      if(!listItem) {
         return res.sendStatus(404);
       }
 
-      list.destroy();
+      listItem.destroy();
       res.sendStatus(204);
     });
 });

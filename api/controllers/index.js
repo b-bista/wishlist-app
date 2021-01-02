@@ -4,13 +4,11 @@ const router = express.Router();
 
 // Load each controller
 const listsController = require('./lists.js');
-//const listItemsController = require('./lists.js');
 const appConfigController = require('./appConfig.js');
 
 // Mount each controller under a specific route. These
 // will be prefixes to all routes defined inside the controller
 router.use('/lists', listsController);
-//router.use('/listItem', listItemsController);
 router.use('/application-configuration', appConfigController);
 
 
