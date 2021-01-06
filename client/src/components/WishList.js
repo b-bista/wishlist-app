@@ -1,52 +1,38 @@
 import React from 'react'
+import { Card, ListGroup } from 'react-bootstrap'
 
 function ListItem(item, index){
     let {name, comment, link} = item;
 
     return (
-        <div>
-            <p>{index+1}</p>
+        <ListGroup.Item>
             <p>{name}</p>
             <p>{comment}</p>
             <p>{link}</p>
-        </div>
+        </ListGroup.Item>
     )
 };
 
 export default function WishList(props) {
-    let {title, descrition, author, dateCreated, } = props.list;
-
-    const items = [
-        {
-            name: "name1",
-            comment: "comment1",
-            link: "link1"
-        },
-        {
-            name: "name2",
-            comment: "comment2",
-            link: "link2"
-        },
-        {
-            name: "name3",
-            comment: "comment3",
-            link: "link3"
-        },
-        {
-            name: "name4",
-            comment: "comment4",
-            link: "link4"
-        },
-    ]
+    let {title, descrition, author, dateCreated, items} = props.list;
 
     return (
-        <div>
-            <p>{title}</p>
-            <p>{descrition}</p>
-            <p>{author}</p>
-            {items.map(item => {
-                return ListItem(item, items.indexOf(item));
-            })}
-        </div>
+        <Card>
+        <Card.Body>
+            <div className="text-left">
+                <Card.Title>{title}</Card.Title>
+                <Card.Text>{descrition}</Card.Text>
+                <Card.Text>{author}</Card.Text>
+                <Card.Text>{dateCreated}</Card.Text>
+            </div>
+            <ListGroup variant="flush">
+                {
+                    items.map(item => {
+                        return ListItem(item, items.indexOf(item));
+                    })
+                }
+            </ListGroup>
+        </Card.Body>
+        </Card>
     )
 }

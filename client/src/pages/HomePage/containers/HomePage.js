@@ -1,17 +1,17 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import ShowLists from '../../../components/ShowLists'
+import {lists} from '../listsConstant'
 
 export default function HomePage() {
-    const [lists, setLists] = useState([]);
+    // const [lists, setLists] = useState([]);
 
-    useEffect({
-        
-    },[]);
+    // useEffect({
+    // },[]);
 
     return (
         <div>
-            
+            <ShowLists lists={lists} />
         </div>
     )
 }
