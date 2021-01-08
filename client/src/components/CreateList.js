@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import {lists} from '../pages/HomePage/listsConstant'
 import {Card} from 'react-bootstrap'
 
 export default function CreateList() {
@@ -55,10 +54,11 @@ export default function CreateList() {
         setListItems([...list]);
     }
 
-    let listItem = lists[0].items;
-
     return (
-        <Card>
+        <Card style={{textAlign: 'center'}}>
+            <h1>
+                Create a list
+            </h1>
             <form>
                 <label>
                 Title:
@@ -132,7 +132,7 @@ export default function CreateList() {
                 <input type="button" value="+" onClick={addItem}/>
                 <br></br>
                 
-                <input type="submit" value="Submit" />
+                <input type="button" value="Create list" />
             </form>
         </Card>
             

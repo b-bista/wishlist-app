@@ -19,7 +19,7 @@ export default function WishList(props) {
     return (
         <Card>
         <Card.Body>
-            <div className="text-left">
+            <div>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{descrition}</Card.Text>
                 <Card.Text>{author}</Card.Text>

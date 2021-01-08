@@ -1,5 +1,6 @@
 import React from 'react'
 import {Navbar, Form, FormControl, Nav, Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function NavBar(props) {
     const isLoggedIn = true; 
@@ -10,8 +11,9 @@ function NavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+                <Link to="/home">Home</Link>
+                <Link to="/my-lists">My Lists</Link>
+                <Link to="/my-subscriptions">My Subscriptions</Link>
             </Nav>
             {
                 isLoggedIn 

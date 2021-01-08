@@ -13,19 +13,24 @@ import NavBar from './components/NavBar.js';
 import CreateList from './components/CreateList.js';
 import LandingPage from './pages/LandingPage/containers/LandingPage';
 import HomePage from './pages/HomePage/containers/HomePage';
+import MyListsPage from './pages/MyListsPage/containers/MyListsPage';
 
 class App extends React.Component {
   render() {
     return (
         <Provider store={store}>
-          <NavBar/>
-          <Router>
-                <Switch>
-                  <Route exact path="/" component={LandingPage} />
-                  <Route path="/home" component={HomePage} />
-                  <Route path="/create-list" component={CreateList} />
-                </Switch>
-          </Router>
+          
+            <Router>
+            <NavBar/>
+              <div style={{textAlign: 'center', maxWidth: '800px', margin: 'auto'}}>
+                  <Switch>
+                    <Route exact path="/" component={LandingPage} />
+                    <Route path="/home" component={HomePage} />
+                    <Route path="/create-list" component={CreateList} />
+                    <Route path="/my-lists" component={MyListsPage} />
+                  </Switch>
+              </div>
+            </Router>
         </Provider>
     );
   }
